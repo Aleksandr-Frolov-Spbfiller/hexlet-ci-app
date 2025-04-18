@@ -1,0 +1,22 @@
+name: second-action
+# on – определяет события, которые запускают воркфлоу
+on: push
+jobs:
+  second-action:
+    runs-on: ubuntu-latest
+    steps: # список шагов, которые надо выполнить
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '18.x'
+          cache: 'npm' # ускоряет повторные сборки
+      - name: setup
+        run: make setup
+      - name: test
+        run: make test
+      - name: lint
+        run: make lint
+      - name: Print Hello from Hexlet
+        uses: hexlet-components/hello-from-hexlet-action@release
