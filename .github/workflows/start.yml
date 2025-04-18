@@ -1,0 +1,14 @@
+name: start
+# on – определяет события, которые запускают воркфлоу
+on: push
+jobs:
+  start:
+    runs-on: ubuntu-latest
+    steps: # список шагов, которые надо выполнить
+      - uses: actions/checkout@v4
+      - name: setup
+        run: make setup
+      - name: test
+        run: make test
+      - name: lint
+        run: make lint
